@@ -17,6 +17,7 @@
       }"
       :style="props.styleElement"
       v-on="listeners"
+      :disabled="props.disabled"
   >
     <slot/>
   </button>
@@ -74,6 +75,10 @@ export default {
     styleElement: {
       type: Object,
       require: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     }
   }
 }

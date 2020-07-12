@@ -30,7 +30,7 @@ async function start() {
       useFindAndModify: false,
     });
 
-    addMockData();
+    await addMockData();
 
     app.listen(PORT, () => {
       console.log(`Server is running on port: ${PORT}`);

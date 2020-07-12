@@ -8,6 +8,7 @@
         dropdown-toggle
         :style-element="styleElement"
         @click.stop="activeToggle"
+        :disabled="disabled"
     >{{ value }}</ui-btn>
     <div
         class="dropdown-menu"
@@ -18,7 +19,7 @@
           type="button"
           class="dropdown-item"
           :key="index"
-          @click="itemClickHandler(item)"
+          @click="itemClickHandler(item, id)"
       >{{ item }}</button>
     </div>
   </div>
@@ -28,6 +29,10 @@
 export default {
   name: "Dropdown",
   props: {
+    id: {
+      type: [String, Number],
+      default: '',
+    },
     value: {
       type: [String, Number],
       default: 'Dropdown',
@@ -43,6 +48,10 @@ export default {
     styleElement: {
       type: Object,
       require: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     }
   },
   data() {
@@ -63,7 +72,7 @@ export default {
         document.removeEventListener('click', this.activeToggle);
       }
     }
-  }
+  },
 }
 </script>
 
